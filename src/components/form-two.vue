@@ -1,24 +1,14 @@
 <script setup>
-import { defineProps, defineEmits, computed } from 'vue'
-const props = defineProps(['modelValue'])
-const emit = defineEmits(['update:modelValue'])
-
-const value = computed({
-    get() {
-        return props.modelValue
-    },
-    set(value) {
-        emit('update:modelValue', value)
-    }
-})
+import { useFormTwoStore } from '../stores/form-two'
+const { form } = useFormTwoStore()
 </script>
 
 <template>
     <form>
         <h2>Form Two</h2>
-        <input v-model="value.name" type="text" placeholder="name" />
-        <input v-model="value.secondName" type="text" placeholder="second name" />
-        <input v-model="value.age" type="text" placeholder="age" />
+        <input v-model="form.name" type="text" placeholder="name" />
+        <input v-model="form.secondName" type="text" placeholder="second name" />
+        <input v-model="form.age" type="text" placeholder="age" />
     </form>
 </template>
 
